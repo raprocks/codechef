@@ -4,7 +4,7 @@ d = 0
 while produced < P:
     d += 1
     if d >= D1:
-        produced -= V1
+        produced += V1
     if d >= D2:
-        produced -= V2
+        produced += V2
 print(d)
