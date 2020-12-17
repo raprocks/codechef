@@ -1,17 +1,16 @@
 test_cases = int(input())
-lead = {"player": 0, "lead":0}
+score1 = []
+score2 = []
 for _ in range(test_cases):
-    score1, score2 = map(int, input().strip().split())
-    score_diff = score1 - score2
-    if score_diff < 0:
-        if -(score_diff) > lead["lead"]:
-            lead["player"] = 2
-            lead["lead"] = -(score_diff)
-        else:
-            pass
-    else:
-        if score_diff > lead["lead"]:
-            lead["player"] = 1
-            lead['lead'] = (score_diff)
-    print(lead)
-print(lead['player'], lead['lead'])
+    a, b = map(int, input().strip().split())
+    score1.append(a)
+    score2.append(b)
+lead_arr = []
+for i in range(1, len(score1)+1):
+    lead_arr.append(sum(score1[:i]) - sum(score2[:i]))
+lead = max(lead_arr, key=lambda x: abs(x))
+if lead >= 0:
+    player = 1
+else:
+    player = 2
+print(player, abs(lead))
