@@ -50,10 +50,22 @@ func main() {
 		}
 		fmt.Scanf("\n")
 		var counter int
-		for sum(A) <= sum(B) {
+		sumA := sum(A)
+		sumB := sum(B)
+		maxLimit := N * M
+		for sumA <= sumB {
 			counter++
 			swap(A, B, min(A), max(B))
+			sumA = sum(A)
+			sumB = sum(B)
+			if counter > maxLimit {
+				break
+			}
 		}
-		fmt.Println(counter)
+		if sumA > sumB {
+			fmt.Println(counter)
+		} else {
+			fmt.Println(-1)
+		}
 	}
 }
